@@ -19,7 +19,6 @@ body{
 .book{
   width:340px;
   height:460px;
-  perspective:2000px;
   position:relative;
 }
 
@@ -30,41 +29,43 @@ body{
   background:white;
   border-radius:18px;
   box-shadow:0 15px 40px rgba(0,0,0,0.25);
-  transform-origin:left;
-  transition:transform 1s ease;
   padding:22px;
   box-sizing:border-box;
-  backface-visibility:hidden;
+  display:none;
+  animation:fade 0.6s ease;
 }
 
-.page h2{
+.page.active{
+  display:block;
+}
+
+h2{
   color:#ff4d88;
   text-align:center;
 }
 
-.page p{
+p{
   color:#555;
   font-size:16px;
   line-height:1.6;
 }
 
-.next{
+button{
   position:absolute;
   bottom:18px;
   right:22px;
-  color:#ff4d88;
-  font-weight:bold;
+  background:#ff4d88;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
   cursor:pointer;
 }
 
-#p1:checked ~ .p1{transform:rotateY(-180deg);}
-#p2:checked ~ .p2{transform:rotateY(-180deg);}
-#p3:checked ~ .p3{transform:rotateY(-180deg);}
-#p4:checked ~ .p4{transform:rotateY(-180deg);}
-#p5:checked ~ .p5{transform:rotateY(-180deg);}
-#p6:checked ~ .p6{transform:rotateY(-180deg);}
-
-input{display:none;}
+@keyframes fade{
+  from{opacity:0; transform:scale(0.95);}
+  to{opacity:1; transform:scale(1);}
+}
 </style>
 </head>
 
@@ -72,76 +73,8 @@ input{display:none;}
 
 <div class="book">
 
-<input type="checkbox" id="p1">
-<input type="checkbox" id="p2">
-<input type="checkbox" id="p3">
-<input type="checkbox" id="p4">
-<input type="checkbox" id="p5">
-<input type="checkbox" id="p6">
-
-<div class="page p1" style="z-index:7;">
+<div class="page active">
 <h2>🎉 Happy Birthday 🎉</h2>
 <p>
 Dear <b>Ilesha Ji</b> 💕<br><br>
-Today is all about you and the beautiful energy you bring into every moment ✨
-</p>
-<label class="next" for="p1">Next ➜</label>
-</div>
-
-<div class="page p2" style="z-index:6;">
-<h2>💖 A Special Day 💖</h2>
-<p>
-Happy Birthday on this special day 🎂  
-May your life be filled with happiness, success, and beautiful memories 🌸
-</p>
-<label class="next" for="p2">Next ➜</label>
-</div>
-
-<div class="page p3" style="z-index:5;">
-<h2>🌷 From the Heart 🌷</h2>
-<p>
-Celebrate today and cherish every moment because you truly deserve the best ❤️  
-Sorry for being a little formal sometimes 😆🥰
-</p>
-<label class="next" for="p3">Next ➜</label>
-</div>
-
-<div class="page p4" style="z-index:4;">
-<h2>✨ Just You ✨</h2>
-<p>
-Never stop being you, because the world needs that exact version of you 💫  
-Your vibe is rare and beautiful.
-</p>
-<label class="next" for="p4">Next ➜</label>
-</div>
-
-<div class="page p5" style="z-index:3;">
-<h2>🌸 A Little Extra 🌸</h2>
-<p>
-You are appreciated more than you know 💗  
-Some bonds are silent but meaningful.
-</p>
-<label class="next" for="p5">Next ➜</label>
-</div>
-
-<div class="page p6" style="z-index:2;">
-<h2>🎂 17 & Amazing 🎂</h2>
-<p>
-Welcome to 17 🎉  
-May this year bring smiles, growth, and success 🌈
-</p>
-<label class="next" for="p6">Next ➜</label>
-</div>
-
-<div class="page" style="z-index:1;">
-<h2>💝 Always Special 💝</h2>
-<p>
-Once again, Happy Birthday Ilesha 🎉💐<br><br>
-Wishing you a year full of happiness, health, and unforgettable moments 💖
-</p>
-</div>
-
-</div>
-
-</body>
-</html>
+Today is all about yo
