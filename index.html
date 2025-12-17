@@ -1,10 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Test</title>
+<meta charset="UTF-8">
+<title>Happy Birthday Ilesha 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg,#ffe6f0,#ffd1e8);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  background: white;
+  width: 90%;
+  max-width: 380px;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  text-align: center;
+  animation: fade 0.5s ease;
+}
+
+h2 {
+  color: #ff4d88;
+}
+
+p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: #ff4d88;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+@keyframes fade {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+</style>
 </head>
-<body style="background:pink; text-align:center;">
-  <h1>IT WORKS 🎉</h1>
-  <p>If you can read this, GitHub Pages is working.</p>
+
+<body>
+
+<div class="card" id="box"></div>
+
+<script>
+const pages = [
+`
+<h2>🎉 Happy Birthday 🎉</h2>
+<p>
+Dear <b>Ilesha Ji</b> 💕<br><br>
+Today is all about you and the beautiful energy you bring into every moment ✨
+</p>
+<button onclick="next()">Next ➜</button>
+`,
+
+`
+<h2>💖 A Special Day 💖</h2>
+<p>
+Happy Birthday on this special day 🎂<br><br>
+I hope you enjoy your day with the people who mean the most to you.
+May this year bring you opportunities, memories, and success 🌸
+</p>
+<button onclick="next()">Next ➜</button>
+`,
+
+`
+<h2>🌷 From the Heart 🌷</h2>
+<p>
+Celebrate today and cherish every moment, because you truly deserve nothing but the best ❤️<br><br>
+Sorry for being formal sometimes 🥰😆
+</p>
+<button onclick="next()">Next ➜</button>
+`,
+
+`
+<h2>✨ Just Being You ✨</h2>
+<p>
+Never stop being you, because the world needs that exact version of you 💫<br><br>
+Your vibe is cute, calm, and honestly very special.
+</p>
+<button onclick="next()">Next ➜</button>
+`,
+
+`
+<h2>🎂 17 & Amazing 🎂</h2>
+<p>
+Welcome to 17 🎉<br><br>
+May this year bring happiness, health, smiles, and beautiful memories 💖
+</p>
+<button onclick="next()">Next ➜</button>
+`,
+
+`
+<h2>💝 Always Special 💝</h2>
+<p>
+Wishing you a wonderful year ahead filled with happiness, health, and smiles ❤️<br><br>
+Happy Birthday once again, Ilesha 🎉💐
+</p>
+`
+];
+
+let i = 0;
+document.getElementById("box").innerHTML = pages[i];
+
+function next() {
+  i++;
+  if (i < pages.length) {
+    document.getElementById("box").innerHTML = pages[i];
+  }
+}
+</script>
+
 </body>
 </html>
