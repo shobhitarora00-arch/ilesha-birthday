@@ -25,7 +25,7 @@ body{
   border-radius:18px;
   box-shadow:0 12px 30px rgba(0,0,0,0.25);
   text-align:center;
-  animation:flipIn 0.7s ease;
+  animation:flip 0.6s ease;
 }
 
 h2{color:#ff4d88;}
@@ -48,9 +48,9 @@ img{
   margin-top:10px;
 }
 
-@keyframes flipIn{
-  from{opacity:0;transform:rotateY(90deg) scale(0.95);}
-  to{opacity:1;transform:rotateY(0) scale(1);}
+@keyframes flip{
+  from{opacity:0;transform:rotateY(90deg);}
+  to{opacity:1;transform:rotateY(0);}
 }
 </style>
 </head>
@@ -60,56 +60,82 @@ img{
 <div class="card" id="box"></div>
 
 <script>
+let i = 0;
+
 const pages = [
-
-`<h2>🎉 Happy Birthday 🎉</h2>
-<p>
-Dear <b>Ilesha Ji</b> 💕<br><br>
-Today is all about you and the beautiful energy you bring into every moment ✨
-</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>💖 A Special Day 💖</h2>
-<p>
-Happy Birthday on this special day 🎂<br><br>
-I hope you enjoy your day with the people who mean the most to you.
-May this year bring you opportunities, memories, and success 🌸
-</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>🌷 From the Heart 🌷</h2>
-<p>
-Celebrate today and cherish every moment, because you truly deserve nothing but the best ❤️<br><br>
-Sorry for being formal 🥰😆❤️🥹💕👀
-</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>📸 Cute Memory 1 📸</h2>
-<img src="photo1.jpg">
-<p>Soft smiles, sweet moments 💗</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>📸 Cute Memory 2 📸</h2>
-<img src="photo2.jpg">
-<p>Another beautiful moment 💕</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>📸 Cute Memory 3 📸</h2>
-<img src="photo3.jpg">
-<p>Memories worth cherishing 💖</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>📸 Cute Memory 4 📸</h2>
-<img src="photo4.jpg">
-<p>Keep smiling forever 🌸</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>📸 Cute Memory 5 📸</h2>
-<img src="photo5.jpg">
-<p>Moments to remember 🥰</p>
-<button onclick="next()">Next ➜</button>`,
-
-`<h2>📸 Cute Memory 6 📸</h2>
-<img src="photo6.jpg">
-<p>Forever special 💗</p>`
+  {
+    title: "🎉 Happy Birthday 🎉",
+    content: "Dear <b>Ilesha Ji</b> 💕<br><br>Today is all about you and your beautiful vibe ✨"
+  },
+  {
+    title: "💖 A Special Day 💖",
+    content: "Happy Birthday 🎂<br><br>May this year bring you joy, memories, and success 🌸"
+  },
+  {
+    title: "🌷 From the Heart 🌷",
+    content: "Celebrate every moment ❤️<br><br>Sorry for being formal 🥰😆❤️🥹💕👀"
+  },
+  {
+    title: "📸 Cute Memory 1 📸",
+    image: "photo1.jpg",
+    content: "Soft smiles, sweet moments 💗"
+  },
+  {
+    title: "📸 Cute Memory 2 📸",
+    image: "photo2.jpg",
+    content: "Another beautiful moment 💕"
+  },
+  {
+    title: "📸 Cute Memory 3 📸",
+    image: "photo3.jpg",
+    content: "Memories worth cherishing 💖"
+  },
+  {
+    title: "📸 Cute Memory 4 📸",
+    image: "photo4.jpg",
+    content: "Keep smiling forever 🌸"
+  },
+  {
+    title: "📸 Cute Memory 5 📸",
+    image: "photo5.jpg",
+    content: "Moments to remember 🥰"
+  },
+  {
+    title: "📸 Cute Memory 6 📸",
+    image: "photo6.jpg",
+    content: "Forever special 💗"
+  }
 ];
+
+function render(){
+  const box = document.getElementById("box");
+  const page = pages[i];
+
+  let html = `<h2>${page.title}</h2>`;
+
+  if(page.image){
+    html += `<img src="${page.image}">`;
+  }
+
+  html += `<p>${page.content}</p>`;
+
+  if(i < pages.length - 1){
+    html += `<button onclick="next()">Next ➜</button>`;
+  }
+
+  box.style.animation = "none";
+  void box.offsetWidth;
+  box.style.animation = "flip 0.6s ease";
+  box.innerHTML = html;
+}
+
+function next(){
+  i++;
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>
