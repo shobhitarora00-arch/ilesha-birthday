@@ -1,80 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Happy Birthday Ilesha 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Happy Birthday Ilesha 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(135deg,#ffe6f0,#ffd1e8);
-  font-family:'Segoe UI',sans-serif;
-}
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffe6f0;
+      font-family: Arial, sans-serif;
+    }
 
-.book{
-  width:340px;
-  height:460px;
-  position:relative;
-}
+    .card {
+      background: white;
+      width: 90%;
+      max-width: 360px;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
+    }
 
-.page{
-  width:100%;
-  height:100%;
-  position:absolute;
-  background:white;
-  border-radius:18px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.25);
-  padding:22px;
-  box-sizing:border-box;
-  display:none;
-  animation:fade 0.6s ease;
-}
+    h2 {
+      color: #ff4d88;
+    }
 
-.page.active{
-  display:block;
-}
+    p {
+      color: #444;
+      font-size: 16px;
+      line-height: 1.6;
+    }
 
-h2{
-  color:#ff4d88;
-  text-align:center;
-}
-
-p{
-  color:#555;
-  font-size:16px;
-  line-height:1.6;
-}
-
-button{
-  position:absolute;
-  bottom:18px;
-  right:22px;
-  background:#ff4d88;
-  color:white;
-  border:none;
-  padding:8px 14px;
-  border-radius:20px;
-  cursor:pointer;
-}
-
-@keyframes fade{
-  from{opacity:0; transform:scale(0.95);}
-  to{opacity:1; transform:scale(1);}
-}
-</style>
+    button {
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="book">
+<div class="card" id="content">
+  <h2>🎉 Happy Birthday 🎉</h2>
+  <p>
+    Dear <b>Ilesha Ji</b> 💕<br><br>
+    Today is all about you and the beautiful energy you bring into every moment ✨
+  </p>
+  <button onclick="next()">Next ➜</button>
+</div>
 
-<div class="page active">
-<h2>🎉 Happy Birthday 🎉</h2>
-<p>
-Dear <b>Ilesha Ji</b> 💕<br><br>
-Today is all about yo
+<script>
+let page = 0;
+
+const pages = [
+  `
+  <h2>🎉 Happy Birthday 🎉</h2>
+  <p>
+    Dear <b>Ilesha Ji</b> 💕<br><br>
+    Today is all about you and the beautiful energy you bring into every moment ✨
+  </p>
+  `,
+
+  `
+  <h2>💖 A Special Day 💖</h2>
+  <p>
+    Happy Birthday on this special day 🎂<br><br>
+    May your life be filled with happiness, success, and beautiful memories 🌸
+  </p>
+  `,
+
+  `
+  <h2>🌷 From the Heart 🌷</h2>
+  <p>
+    Celebrate today and cherish every moment because you truly deserve the best ❤️<br><br>
+    Sorry for being a little formal sometimes 😆🥰
+  </p>
+  `,
+
+  `
+  <h2>✨ Just You ✨</h2>
+  <p>
+    Never stop being you, because the world needs that exact version of you 💫<br><br>
+    Your vibe is rare and beautiful.
+  </p>
+  `,
+
+  `
+  <h2>🎂 17 & Amazing 🎂</h2>
+  <p>
+    Welcome to 17 🎉<b
