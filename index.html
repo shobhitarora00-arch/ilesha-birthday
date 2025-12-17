@@ -14,6 +14,7 @@ body{
   align-items:center;
   background:linear-gradient(135deg,#ffe6f0,#ffd1e8);
   font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
 }
 
 .card{
@@ -26,6 +27,7 @@ body{
   box-shadow:0 12px 30px rgba(0,0,0,0.25);
   text-align:center;
   animation:flip 0.6s ease;
+  z-index:10;
 }
 
 h2{color:#ff4d88;}
@@ -48,9 +50,26 @@ img{
   margin-top:10px;
 }
 
+/* Flip animation */
 @keyframes flip{
   from{opacity:0;transform:rotateY(90deg);}
   to{opacity:1;transform:rotateY(0);}
+}
+
+/* Heart confetti */
+.heart{
+  position:fixed;
+  top:-20px;
+  font-size:18px;
+  animation:fall linear forwards;
+  pointer-events:none;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
 }
 </style>
 </head>
@@ -104,6 +123,10 @@ const pages = [
     title: "📸 Cute Memory 6 📸",
     image: "photo6.jpg",
     content: "Forever special 💗"
+  },
+  {
+    title: "💝 Always Special 💝",
+    content: "I hope this small surprise made you smile 💖<br><br>You deserve happiness, love, and beautiful moments today and always ✨<br><br>Tap below to see it again 🥰"
   }
 ];
 
@@ -121,17 +144,47 @@ function render(){
 
   if(i < pages.length - 1){
     html += `<button onclick="next()">Next ➜</button>`;
+  } else {
+    html += `<button onclick="restart()">🔁 Replay</button>`;
+    startHearts();
   }
 
   box.style.animation = "none";
   void box.offsetWidth;
   box.style.animation = "flip 0.6s ease";
+
   box.innerHTML = html;
 }
 
 function next(){
   i++;
   render();
+}
+
+function restart(){
+  i = 0;
+  clearHearts();
+  render();
+}
+
+/* Heart confetti functions */
+let heartInterval;
+
+function startHearts(){
+  heartInterval = setInterval(()=>{
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (3 + Math.random()*3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  },200);
+}
+
+function clearHearts(){
+  clearInterval(heartInterval);
+  document.querySelectorAll(".heart").forEach(h=>h.remove());
 }
 
 render();
